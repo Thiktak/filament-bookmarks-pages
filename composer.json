@@ -1,21 +1,22 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "Thiktak/filament-bookmarks",
+    "description": "Plugin for FilamentPHP - Bookmarks pages",
     "keywords": [
-        ":vendor_name",
+        "thiktak",
         "laravel",
-        ":package_slug"
+        "filament",
+        "filament-bookmarks"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/Thiktak/filament-bookmarks",
     "support": {
-        "issues": "https://github.com/:vendor_slug/:package_slug/issues",
-        "source": "https://github.com/:vendor_slug/:package_slug"
+        "issues": "https://github.com/Thiktak/filament-bookmarks/issues",
+        "source": "https://github.com/Thiktak/filament-bookmarks"
     },
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Georges OLIVARES",
+            "email": "georges.olivares@gmail.com",
             "role": "Developer"
         }
     ],
@@ -42,13 +43,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src/",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories/"
+            "Thiktak\\FilamentBookmarks\\": "src/",
+            "Thiktak\\FilamentBookmarks\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests/"
+            "Thiktak\\FilamentBookmarks\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -68,10 +69,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "Thiktak\\FilamentBookmarks\\FilamentBookmarksServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "FilamentBookmarks": "Thiktak\\FilamentBookmarks\\Facades\\FilamentBookmarks"
             }
         }
     },

@@ -1,15 +1,15 @@
 <?php
 
-namespace VendorName\Skeleton;
+namespace Thiktak\FilamentBookmarks;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 
-class SkeletonPlugin implements Plugin
+class FilamentBookmarksPlugin implements Plugin
 {
     public function getId(): string
     {
-        return 'skeleton';
+        return 'FilamentBookmarks';
     }
 
     public function register(Panel $panel): void
