@@ -7,7 +7,6 @@ use Filament\Panel;
 
 class FilamentBookmarksPlugin implements Plugin
 {
-
     public function getId(): string
     {
         return 'FilamentBookmarks';
@@ -36,16 +35,16 @@ class FilamentBookmarksPlugin implements Plugin
         return $plugin;
     }
 
+    public string $menuPlacement = 'UserMenu';
 
-
-
-    public string $menuPlacement   = 'UserMenu';
     public bool $lastPagesActivate = 'UserMenu';
-    public int $lastPagesHistory   = 'UserMenu';
+
+    public int $lastPagesHistory = 'UserMenu';
 
     public function menuPlacement(string $menuPlacement): static
     {
         $this->menuPlacement = $menuPlacement;
+
         return $this;
     }
 
@@ -53,6 +52,7 @@ class FilamentBookmarksPlugin implements Plugin
     {
         $this->lastPagesActivate = $activate;
         $this->lastPagesHistory = $history;
+
         return $this;
     }
 }
