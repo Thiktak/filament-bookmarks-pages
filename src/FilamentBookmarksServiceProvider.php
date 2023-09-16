@@ -16,6 +16,7 @@ use Livewire\Livewire;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
+
 //use Thiktak\FilamentBookmarks\Commands\FilamentBookmarksCommand;
 //use Thiktak\FilamentBookmarks\Testing\TestsFilamentBookmarks;
 
@@ -83,7 +84,6 @@ class FilamentBookmarksServiceProvider extends PackageServiceProvider
 
         Livewire::component('topbar-bookmark', \Thiktak\FilamentBookmarks\Livewire\TopbarBookmark::class);
 
-
         /*FilamentView::registerRenderHook(
             'panels::global-search.after',
             //fn (): string => Blade::render('@livewire(\'thiktak-filament-bookmarks::topbar-bookmark\')') //, [\'lazy\' => true])')
@@ -116,7 +116,7 @@ class FilamentBookmarksServiceProvider extends PackageServiceProvider
     protected function getAssets(): array
     {
         return [
-            /*// AlpineComponent::make('FilamentBookmarks', __DIR__ . '/../resources/dist/components/FilamentBookmarks.js'),
+        /*// AlpineComponent::make('FilamentBookmarks', __DIR__ . '/../resources/dist/components/FilamentBookmarks.js'),
             Css::make('FilamentBookmarks-styles', __DIR__ . '/../resources/dist/FilamentBookmarks.css'),
             Js::make('FilamentBookmarks-scripts', __DIR__ . '/../resources/dist/FilamentBookmarks.js'),*/];
     }

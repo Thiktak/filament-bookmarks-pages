@@ -2,14 +2,13 @@
 
 namespace Thiktak\FilamentBookmarks\Traits;
 
-use Filament\Actions;
 use Illuminate\Support\Facades\URL;
 
 trait HasPageHistory
 {
-    static public array $pageHistoryQueryStringAsPage = [];
+    public static array $pageHistoryQueryStringAsPage = [];
 
-    static public function getPageHistoryQueryStringAsPage(): array
+    public static function getPageHistoryQueryStringAsPage(): array
     {
         return static::$pageHistoryQueryStringAsPage;
     }
@@ -24,7 +23,7 @@ trait HasPageHistory
 
     static public function bootHasPageHistory()
     {*/
-        if (!auth()->id()) {
+        if (! auth()->id()) {
             return;
         }
 
@@ -47,7 +46,7 @@ trait HasPageHistory
                 'url' => $url,
             ], [
                 'title' => $this->getTitle(),
-                'icon'  => $this->getNavigationIcon(),
+                'icon' => $this->getNavigationIcon(),
             ])
             ->touch();
 

@@ -4,7 +4,6 @@ namespace Thiktak\FilamentBookmarks;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
-use Illuminate\Support\Facades\Blade;
 
 class FilamentBookmarksPlugin implements Plugin
 {
@@ -52,7 +51,6 @@ class FilamentBookmarksPlugin implements Plugin
     {
         return strtolower($this->menuPlacement);
     }
-
 
     public function hasMenuPlacementUserMenu(): bool
     {

@@ -6,11 +6,9 @@ use Closure;
 use Filament\Actions\Action;
 use Filament\Actions\Contracts\HasActions;
 use Filament\Forms\Components\ColorPicker;
-use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\ViewField;
-use Filament\Pages\Page;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\URL;
@@ -34,6 +32,7 @@ class BookmarkAction extends Action
     public function activatePageFeatures(bool $activatePageFeatures): static
     {
         $this->activatePageFeatures = $activatePageFeatures;
+
         return $this;
     }
 
@@ -61,12 +60,12 @@ class BookmarkAction extends Action
                 Bookmark::query()
                     ->updateOrCreate([
                         'user_id' => auth()->id() ?: 0,
-                        'url' => $data['url']
+                        'url' => $data['url'],
                     ], [
                         'group' => $data['group'],
-                        'icon'  => $data['icon'],
+                        'icon' => $data['icon'],
                         'color' => $data['color'],
-                        'title' => $data['title']
+                        'title' => $data['title'],
                     ]);
 
                 $this->success();
@@ -76,10 +75,10 @@ class BookmarkAction extends Action
             ->stickyModalHeader()
             ->stickyModalFooter()
             ->slideOver()
-            ->outlined(fn () => !$this->activatePageFeatures)
-            ->extraAttributes(fn () => !$this->activatePageFeatures ? [
+            ->outlined(fn () => ! $this->activatePageFeatures)
+            ->extraAttributes(fn () => ! $this->activatePageFeatures ? [
                 'class' => 'border-0 !ring-0',
-                'style' => 'box-shadow: none'
+                'style' => 'box-shadow: none',
             ] : []);
 
         /*$this->label(false); //__('filament-actions::edit.single.label'));
@@ -88,7 +87,7 @@ class BookmarkAction extends Action
 
         //$this->modalHeading(fn (): string => __('filament-actions::edit.single.modal.heading', ['label' => $this->getRecordTitle()]));
 
-        
+
 
         //$this->modalSubmitActionLabel(__('filament-actions::edit.single.modal.actions.save.label'));
 
@@ -160,7 +159,7 @@ class BookmarkAction extends Action
                                             ->get()
                                             ->map(fn ($row) => $row->updateTitle())
                                             ->groupBy('group'), // group does not exists :)
-                                    ])
+                                    ]),
                             ];
                         }),
 
@@ -179,7 +178,7 @@ class BookmarkAction extends Action
                                             ->orderByDesc('user_id')
                                             ->get()
                                             ->groupBy('group'),
-                                    ])
+                                    ]),
                             ];
                         }),
 
@@ -196,7 +195,7 @@ class BookmarkAction extends Action
                                         'links' => $this->getDataForThis($this->pathUrl)
                                             ->get()
                                             ->groupBy('group'),
-                                    ])
+                                    ]),
                             ];
                         }),
 
@@ -221,8 +220,8 @@ class BookmarkAction extends Action
 
                                 TextInput::make('group'),
                             ];
-                        })
-                ])
+                        }),
+                ]),
         ];
     }
 
