@@ -1,13 +1,14 @@
 <?php
 
-namespace Thiktak\FilamentBookmarks;
+namespace Thiktak\FilamentBookmarks\Traits;
 
 use Filament\Actions;
 
-trait HasPageBookmark
+trait HasPageBookmarks
 {
-    protected function HasPageBookmarkGetHeaderActions(): array
+    protected function HasPageBookmarksGetHeaderActions(): array
     {
+        dd(1);
         return [
             ...($this->getHeaderActions()),
             Actions\Action::make()

@@ -8,19 +8,22 @@ use Filament\Support\Assets\Css;
 use Filament\Support\Assets\Js;
 use Filament\Support\Facades\FilamentAsset;
 use Filament\Support\Facades\FilamentIcon;
+use Filament\Support\Facades\FilamentView;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Facades\Blade;
 use Livewire\Features\SupportTesting\Testable;
+use Livewire\Livewire;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Thiktak\FilamentBookmarks\Commands\FilamentBookmarksCommand;
-use Thiktak\FilamentBookmarks\Testing\TestsFilamentBookmarks;
+//use Thiktak\FilamentBookmarks\Commands\FilamentBookmarksCommand;
+//use Thiktak\FilamentBookmarks\Testing\TestsFilamentBookmarks;
 
 class FilamentBookmarksServiceProvider extends PackageServiceProvider
 {
-    public static string $name = 'ThiktakFilamentBookmarks';
+    public static string $name = 'thiktak-filament-bookmarks';
 
-    public static string $viewNamespace = 'ThiktakFilamentBookmarks';
+    public static string $viewNamespace = 'thiktak-filament-bookmarks';
 
     public function configurePackage(Package $package): void
     {
@@ -30,7 +33,7 @@ class FilamentBookmarksServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package->name(static::$name)
-            ->hasCommands($this->getCommands())
+            //->hasCommands($this->getCommands())
             ->hasInstallCommand(function (InstallCommand $command) {
                 $command
                     ->publishConfigFile()
@@ -78,14 +81,25 @@ class FilamentBookmarksServiceProvider extends PackageServiceProvider
         // Icon Registration
         FilamentIcon::register($this->getIcons());
 
+        Livewire::component('topbar-bookmark', \Thiktak\FilamentBookmarks\Livewire\TopbarBookmark::class);
+
+
+        /*FilamentView::registerRenderHook(
+            'panels::global-search.after',
+            //fn (): string => Blade::render('@livewire(\'thiktak-filament-bookmarks::topbar-bookmark\')') //, [\'lazy\' => true])')
+            fn (): string => Blade::render('@livewire(\Thiktak\FilamentBookmarks\Livewire\TopbarBookmark::class)') //, [\'lazy\' => true])')
+            //fn (): View => view('thiktak-filament-bookmarks::components.topbar.index'),
+            //scopes: \App\Filament\Resources\UserResource\Pages\EditUser::class,
+        );*/
+
         // Handle Stubs
-        if (app()->runningInConsole()) {
+        /*if (app()->runningInConsole()) {
             foreach (app(Filesystem::class)->files(__DIR__ . '/../stubs/') as $file) {
                 $this->publishes([
                     $file->getRealPath() => base_path("stubs/FilamentBookmarks/{$file->getFilename()}"),
                 ], 'FilamentBookmarks-stubs');
             }
-        }
+        }*/
 
         // Testing
         //Testable::mixin(new TestsFilamentBookmarks());
@@ -93,7 +107,7 @@ class FilamentBookmarksServiceProvider extends PackageServiceProvider
 
     protected function getAssetPackageName(): ?string
     {
-        return 'Thiktak/filament-bookmarks';
+        return 'thiktak-filament-bookmarks';
     }
 
     /**
@@ -102,10 +116,9 @@ class FilamentBookmarksServiceProvider extends PackageServiceProvider
     protected function getAssets(): array
     {
         return [
-            // AlpineComponent::make('FilamentBookmarks', __DIR__ . '/../resources/dist/components/FilamentBookmarks.js'),
+            /*// AlpineComponent::make('FilamentBookmarks', __DIR__ . '/../resources/dist/components/FilamentBookmarks.js'),
             Css::make('FilamentBookmarks-styles', __DIR__ . '/../resources/dist/FilamentBookmarks.css'),
-            Js::make('FilamentBookmarks-scripts', __DIR__ . '/../resources/dist/FilamentBookmarks.js'),
-        ];
+            Js::make('FilamentBookmarks-scripts', __DIR__ . '/../resources/dist/FilamentBookmarks.js'),*/];
     }
 
     /**
@@ -148,7 +161,7 @@ class FilamentBookmarksServiceProvider extends PackageServiceProvider
     protected function getMigrations(): array
     {
         return [
-            //'create_FilamentBookmarks_table',
+            'create_thiktak_bookmarks_table',
         ];
     }
 }

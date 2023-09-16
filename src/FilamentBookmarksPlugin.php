@@ -4,12 +4,13 @@ namespace Thiktak\FilamentBookmarks;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
+use Illuminate\Support\Facades\Blade;
 
 class FilamentBookmarksPlugin implements Plugin
 {
     public function getId(): string
     {
-        return 'FilamentBookmarks';
+        return 'ThiktakFilamentBookmarks';
     }
 
     public function register(Panel $panel): void
@@ -19,7 +20,6 @@ class FilamentBookmarksPlugin implements Plugin
 
     public function boot(Panel $panel): void
     {
-        //
     }
 
     public static function make(): static
@@ -37,15 +37,26 @@ class FilamentBookmarksPlugin implements Plugin
 
     public string $menuPlacement = 'UserMenu';
 
-    public bool $lastPagesActivate = 'UserMenu';
+    public bool $lastPagesActivate = true;
 
-    public int $lastPagesHistory = 'UserMenu';
+    public int $lastPagesHistory = 10;
 
     public function menuPlacement(string $menuPlacement): static
     {
         $this->menuPlacement = $menuPlacement;
 
         return $this;
+    }
+
+    public function getMenuPlacement(): string
+    {
+        return strtolower($this->menuPlacement);
+    }
+
+
+    public function hasMenuPlacementUserMenu(): bool
+    {
+        return $this->menuPlacement == 'usermenu';
     }
 
     public function activateLastPages(bool $activate = true, int $history = 10): static
