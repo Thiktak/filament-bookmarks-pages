@@ -3,7 +3,6 @@
 namespace Thiktak\FilamentBookmarks\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\URL;
 
 class History extends Model

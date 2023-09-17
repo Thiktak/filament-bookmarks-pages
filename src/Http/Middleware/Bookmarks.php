@@ -4,9 +4,9 @@ namespace Thiktak\FilamentBookmarks\Http\Middleware;
 
 use Closure;
 use Filament\Facades\Filament;
-use Illuminate\Http\Request;
 use Filament\Navigation\MenuItem;
 use Filament\Support\Facades\FilamentView;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,7 +18,7 @@ class Bookmarks
     {
         $panel = Filament::getCurrentPanel();
 
-        if (!$panel->hasPlugin('ThiktakFilamentBookmarks')) {
+        if (! $panel->hasPlugin('ThiktakFilamentBookmarks')) {
             return $next($request);
         }
 

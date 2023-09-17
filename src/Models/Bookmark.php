@@ -21,16 +21,16 @@ class Bookmark extends Model
         parent::boot();
 
         self::creating(function ($model) {
-            if (!($page = @file_get_contents($model->url . '@'))) {
+            if (! ($page = @file_get_contents($model->url . '@'))) {
                 $model->title = preg_match('/<title[^>]*>(.*?)<\/title>/ims', $page, $match) ? $match[1] : null;
                 $model->code = 200;
             } else {
                 $model->code = 404;
             }
+
             return $model;
         });
     }
-
 
     public function getUrl(): string
     {
